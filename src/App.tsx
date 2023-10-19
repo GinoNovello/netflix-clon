@@ -8,8 +8,8 @@ import {UserSelection} from "./views/user-selection";
 function App() {
     return (
         <Routes>
+            <Route element={<UserSelection />} path="/" />;
             <Route element={<Layout />}>
-                <Route element={<UserSelection />} path="/" />;
                 <Route element={<Home />} path="/home" />;
                 <Route element={<Detail />} path="/detail/:id" />;
             </Route>
