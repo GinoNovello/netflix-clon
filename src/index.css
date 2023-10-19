@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Netflix-Bold';
+    src: url('./assets/fonts/netflix-sans-font/NetflixSans-Bold.woff2') format('woff2'),
+         url('./assets/fonts/netflix-sans-font/NetflixSans-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Netflix';
+    src: url('./assets/fonts/netflix-sans-font/NetflixSans-Regular.woff2') format('woff2'),
+         url('./assets/fonts/netflix-sans-font/NetflixSans-Regular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Netflix-Medium';
+    src: url('./assets/fonts/netflix-sans-font/NetflixSans-Medium.woff2') format('woff2'),
+         url('./assets/fonts/netflix-sans-font/NetflixSans-Medium.otf') format('opentype');
+}
+
+
+
