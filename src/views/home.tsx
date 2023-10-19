@@ -26,25 +26,25 @@ export function Home() {
                 {movies && (
                     <img
                         alt=""
-                        className="w-full h-full object-cover z-0"
+                        className="z-0 object-cover w-full h-full"
                         src={`http://image.tmdb.org/t/p/original${movies[6]?.backdrop_path}`}
                     />
                 )}
             </div>
             {movies && (
-                <div className="relative w-full h-full text-white">
+                <div className="relative w-full h-full text-white py-60">
                     <div className="max-w-[685px] pl-[60px]">
-                        <h2 className="text-9xl text-yellow-500">{movies[6].title}</h2>
-                        <p className="py-7 text-2xl">{movies[6].overview}</p>
+                        <h2 className="text-yellow-500 text-9xl font-netflix-bold">{movies[6].title}</h2>
+                        <p className="text-2xl py-7">{movies[6].overview}</p>
 
-                        <div className="font-medium text-2xl flex gap-4">
-                            <button className="bg-white text-black py-3 px-10 gap-3 flex justify-center items-center rounded-md">
-                                <i className="fa-duotone fa-play text-3xl" />
+                        <div className="flex gap-4 text-2xl font-netflix-medium">
+                            <button className="flex items-center justify-center gap-3 px-10 py-3 text-black bg-white rounded-md">
+                                <i className="text-3xl fa-duotone fa-play" />
                                 Reproducir
                             </button>
 
                             <button className="bg-[#515254] text-white py-3 gap-3 px-10 flex justify-center items-center rounded-md">
-                                <i className="fa-light fa-circle-info text-3xl" />
+                                <i className="text-3xl fa-regular fa-circle-info" />
                                 Más información
                             </button>
                         </div>

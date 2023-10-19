@@ -11,6 +11,7 @@ export function Navbar() {
     const setMovieData = useMoviesStore((state) => state.setSearchMovieData);
     const searchRef = useRef<null>(null);
     const {debouncedValue, onQueryChange} = useDebounce(1000);
+
     const clickOutside = (event: any) => {
         const searchBarId = event.target.parentElement.id === "searchContainer";
 
@@ -25,11 +26,13 @@ export function Navbar() {
     const changeColor = () => {
         window.scrollY >= 68 ? setColor(true) : setColor(false);
     };
+
     const handleEffect = () => {
         setTimeout(() => {
             setInputEffect(true);
         }, 10);
     };
+
     const querySearch = async () => {
         const res = await moviesController.searchMovies({query: debouncedValue});
 
@@ -51,6 +54,8 @@ export function Navbar() {
         openSearch ? window.addEventListener("click", clickOutside) : window.removeEventListener("click", clickOutside);
     }, [openSearch]);
 
+    const navStyle = "hover:text-[#B3B3B3] cursor-pointer transition-all";
+
     return (
         <nav
             className={`${
@@ -58,7 +63,7 @@ export function Navbar() {
             } transition-all duration-500 text-primary flex justify-between items-center h-[68px] px-[60px] sticky top-0 z-10 text-sm`}
             style={{background: color ? " " : "linear-gradient(180deg, rgba(0,0,0,.7) 10%, transparent)"}}
         >
-            <div className="flex gap-11 items-center">
+            <div className="flex items-center gap-11">
                 <img
                     alt="Netflix logo"
                     className="w-[92.5px] h-[31px]"
@@ -67,12 +72,12 @@ export function Navbar() {
                     width={92.5}
                 />
                 <ul className="flex gap-5">
-                    <li>Inicio</li>
-                    <li>Series</li>
-                    <li>Películas</li>
-                    <li>Novedades populares</li>
-                    <li>Mi lista</li>
-                    <li>Explora por idiomas</li>
+                    <li className={navStyle}>Inicio</li>
+                    <li className={navStyle}>Series</li>
+                    <li className={navStyle}>Películas</li>
+                    <li className={navStyle}>Novedades populares</li>
+                    <li className={navStyle}>Mi lista</li>
+                    <li className={navStyle}>Explora por idiomas</li>
                 </ul>
             </div>
             <div className="flex items-center" id="searchContainer">
@@ -86,7 +91,7 @@ export function Navbar() {
                     />
                 )}
                 <i
-                    className="fa-regular fa-magnifying-glass text-xl cursor-pointer"
+                    className="text-xl cursor-pointer fa-regular fa-magnifying-glass"
                     onClick={() => {
                         handleEffect();
                         setOpenSearch(!openSearch);
