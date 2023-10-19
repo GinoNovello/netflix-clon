@@ -4,7 +4,11 @@ import {useParams} from "react-router-dom";
 import moviesController from "@/controllers/movies-controller";
 import {Movie} from "@/types/movies/types";
 
-export function MovieList({sectionName}) {
+interface Props {
+    sectionName: string;
+}
+
+export function MovieList({sectionName}: Props) {
     const [movies, setMovies] = useState<Movie[] | undefined>(undefined);
     const param = useParams();
     const cambiarNombre = async () => {
