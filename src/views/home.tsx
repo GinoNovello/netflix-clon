@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 
+import {MovieList} from "./movie-list";
+
 import moviesController from "@/controllers/movies-controller";
 import {Movie} from "@/types/movies/types";
 import {useMoviesStore} from "@/stores/movies-store";
@@ -21,7 +23,7 @@ export function Home() {
     }, []);
 
     return (
-        <>
+        <div className="flex flex-col">
             <div className="absolute top-0 left-0 w-full h-full">
                 {movies && (
                     <img
@@ -51,6 +53,10 @@ export function Home() {
                     </div>
                 </div>
             )}
-        </>
+            <div className="flex flex-col gap-y-14">
+                <MovieList sectionName={"Tendencias"} />
+                <MovieList sectionName={"Pingas"} />
+            </div>
+        </div>
     );
 }
