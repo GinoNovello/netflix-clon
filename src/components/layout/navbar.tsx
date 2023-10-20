@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from "react";
+import {NavLink} from "react-router-dom";
 
 import moviesController from "@/controllers/movies-controller";
 import {useDebounce} from "@/hooks/useDebounce";
@@ -54,7 +55,8 @@ export function Navbar() {
         openSearch ? window.addEventListener("click", clickOutside) : window.removeEventListener("click", clickOutside);
     }, [openSearch]);
 
-    const navStyle = "hover:text-[#B3B3B3] cursor-pointer transition-all";
+    const navActiveStyle = "text-white font-netflix-medium";
+    const navDefaultStyle = "hover:text-[#B3B3B3] cursor-pointer transition-all";
 
     return (
         <nav
@@ -72,12 +74,24 @@ export function Navbar() {
                     width={92.5}
                 />
                 <ul className="flex gap-5">
-                    <li className={navStyle}>Inicio</li>
-                    <li className={navStyle}>Series</li>
-                    <li className={navStyle}>Películas</li>
-                    <li className={navStyle}>Novedades populares</li>
-                    <li className={navStyle}>Mi lista</li>
-                    <li className={navStyle}>Explora por idiomas</li>
+                    <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/home"}>
+                        Inicio
+                    </NavLink>
+                    <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/series"}>
+                        Series
+                    </NavLink>
+                    <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/movies"}>
+                        Películas
+                    </NavLink>
+                    <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/latest"}>
+                        Novedades populares
+                    </NavLink>
+                    <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/list"}>
+                        Mi lista
+                    </NavLink>
+                    <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/audio"}>
+                        Explora por idiomas
+                    </NavLink>
                 </ul>
             </div>
             <div className="flex items-center" id="searchContainer">
