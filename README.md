@@ -1,6 +1,9 @@
-# Boilerplate Vite + React + Tailwind
+# Netflix clon React + Typescript + Tailwind
 
-This boilerplate is based on [Vite](https://vitejs.dev/) and [React](https://reactjs.org/) with [Tailwind CSS](https://tailwindcss.com/).
+Project created on [Vite](https://vitejs.dev/) and [React](https://reactjs.org/) with [Tailwind CSS](https://tailwindcss.com/).
+
+## API used:
+[TheMovieDB](https://developer.themoviedb.org/docs)
 
 ## Extensions recommended:
 
@@ -25,74 +28,12 @@ npm install
 npm run dev
 ```
 
-## Project architecture
-
-```
-├── public 
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   ├── fontawesome
-│   │   |   ├── css
-│   │   |   └── webfonts
-│   │   └── images
-│   ├── components
-│   │   ├── layout
-│   │   └── ui
-│   ├── controllers
-│   ├── hooks
-│   ├── services
-│   |   ├── axios-service.ts
-│   |   ├── config.ts
-│   │   ├── fetch-service.ts
-|   |   ├── headers-service.ts
-|   |   └── http-client.ts
-│   ├── types
-│   │   └── services
-|   |       └── types.ts
-│   ├── views
-│   ├── App.tsx
-│   ├── index.jsx
-│   └── main.tsx
-├── .eslintrc.js
-├── .gitignore
-├── .env
-├── index.html
-├── package.json
-├── postcss.config.js
-├── README.md
-├── tailwind.config.js
-├── tsconfig.json
-└── vite.config.js
-```
-
 ## Project configuration
 
 ### Environment variables
 
-Create a `.env` file in the root of the project.
-
-### Watch mode
-
-Make sure don't have `errors` on the `wath mode` after push your code to the repository.
-
-### ESLint
-
-Make sure don't have `errors` on the `eslint` after push your code to the repository.
-
-## Absolute imports
-
-You can import your `components`, `hooks`, `services`, `types`, `views`, etc. with absolute paths.
-
+Create a `.env` file in the root of the project and add these enviroment variables:
 ```
-import { Button } from '@/components/ui/button';
+VITE_APP_API_KEY="YOUR API KEY"
+VITE_APP_ACCESS_TOKEN="YOUR ACCESS TOKEN"
 ```
-
-
-
-
-
-
-
-
-# netflix-clon
