@@ -31,7 +31,7 @@ export function Home() {
                 <title>Página de inicio — Netflix</title>
                 <link href="http://localhost:5173/home" rel="canonical" />
             </Helmet>
-            <div className="flex flex-col">
+            <div className="flex flex-col max-w-full px-[60px]">
                 <div className="absolute top-0 left-0 w-full h-full">
                     {movies && (
                         <img
@@ -41,9 +41,18 @@ export function Home() {
                         />
                     )}
                 </div>
+                <div
+                    className="absolute left-0 top-auto right-0 -bottom-[1px] bg-transparent bg-repeat-x h-[14.7vw] w-full"
+                    style={{
+                        backgroundPosition: "0 top",
+                        backgroundSize: "100% 100%",
+                        backgroundImage:
+                            "linear-gradient(180deg,hsla(0,0%,8%,0) 0,hsla(0,0%,8%,.15) 15%,hsla(0,0%,8%,.35) 29%,hsla(0,0%,8%,.58) 44%,#141414 100%,#141414)",
+                    }}
+                />
                 {movies && (
-                    <div className="relative w-full h-full text-white py-60">
-                        <div className="max-w-[685px] pl-[60px]">
+                    <div className="relative w-full h-full min-h-[calc(100vh-220px)] flex items-center text-white">
+                        <div className="max-w-[685px]">
                             <h2 className="text-yellow-500 text-7xl font-netflix-bold">{movies[6].title}</h2>
                             <p className="text-2xl py-7">{movies[6].overview}</p>
 
@@ -62,8 +71,8 @@ export function Home() {
                     </div>
                 )}
                 <div className="flex flex-col gap-y-14">
-                    <MovieListNumber sectionName={"Tendencias"} />
                     <MovieList sectionName={"Nuevos lanzamientos"} />
+                    <MovieListNumber sectionName={"Tendencias"} />
                 </div>
             </div>
         </>

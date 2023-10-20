@@ -24,19 +24,27 @@ export function MovieListNumber({sectionName}: Props) {
     }, [param.id]);
 
     return (
-        <div className="z-20 flex flex-col text-[#E5E5E5] text-3xl ">
-            <h3 className="pl-[60px] py-4 font-netflix-medium">{sectionName}</h3>
+        <div className="z-20 flex flex-col text-[#E5E5E5] text-3xl max-w-full overflow-hidden h-full">
+            <h3 className="py-4 font-netflix-medium">{sectionName}</h3>
             <div className="flex gap-2">
-                {movies?.map((movie, index) => (
-                    <div key={movie.id} className="flex">
-                        <h2 className="">{index + 1}</h2>
-                        <img
-                            alt=""
-                            className="w-[293px] rounded"
-                            src={`http://image.tmdb.org/t/p/w500${movie?.poster_path}`}
-                        />
-                    </div>
-                ))}
+                {movies?.map(
+                    (movie, index) =>
+                        index <= 9 && (
+                            <div key={movie.id} className="flex items-center min-w-[293px] h-[210px] relative">
+                                <h2
+                                    className="text-[210px] text-black w-full block"
+                                    style={{WebkitTextStroke: "5px #595959"}}
+                                >
+                                    {index + 1}
+                                </h2>
+                                <img
+                                    alt=""
+                                    className="w-auto max-w-[140px] rounded absolute right-0 top-0"
+                                    src={`http://image.tmdb.org/t/p/w500${movie?.poster_path}`}
+                                />
+                            </div>
+                        ),
+                )}
             </div>
         </div>
     );
