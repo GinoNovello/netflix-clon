@@ -4,7 +4,7 @@ import {Navbar} from "./navbar";
 
 export function Layout() {
     return (
-        <div className="bg-[#141414] font-netflix">
+        <div className="bg-[#141414] font-netflix overflow-x-hidden">
             <Navbar />
             <div className="w-full min-h-[calc(100vh-68px)] flex justify-center">
                 <Outlet />
