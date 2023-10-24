@@ -24,8 +24,8 @@ export function MovieListNumber({sectionName}: Props) {
     }, [param.id]);
 
     return (
-        <div className="z-20 flex flex-col text-[#E5E5E5] text-3xl max-w-full h-full">
-            <h3 className="py-4 font-netflix-medium">{sectionName}</h3>
+        <div className="flex flex-col text-[#E5E5E5] text-3xl max-w-full h-full">
+            <h3 className="pb-4 font-netflix-medium">{sectionName}</h3>
             <div className="flex gap-2 h-[210px] w-full">
                 {movies?.map(
                     (movie, index) =>
