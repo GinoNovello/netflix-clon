@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
+import {useSpringCarousel} from "node_modules/react-spring-carousel/dist/types";
 
 import moviesController from "@/controllers/movies-controller";
 import {Movie} from "@/types/movies/types";
