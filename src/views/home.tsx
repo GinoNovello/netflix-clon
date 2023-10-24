@@ -7,6 +7,7 @@ import moviesController from "@/controllers/movies-controller";
 import {Movie} from "@/types/movies/types";
 import {useMoviesStore} from "@/stores/movies-store";
 import {MovieListNumber} from "@/components/movie-list-number";
+import {Footer} from "@/components/footer";
 
 export function Home() {
     const [movies, setMovies] = useState<Movie[] | undefined>(undefined);
@@ -36,7 +37,7 @@ export function Home() {
                     {movies && (
                         <img
                             alt=""
-                            className="z-0 object-cover w-full h-full"
+                            className="object-cover w-full h-full"
                             src={`http://image.tmdb.org/t/p/original${movies[6]?.backdrop_path}`}
                         />
                     )}
@@ -73,8 +74,9 @@ export function Home() {
                 <div className="flex flex-col gap-y-14">
                     <MovieList sectionName={"Nuevos lanzamientos"} />
                     <MovieListNumber sectionName={"Tendencias"} />
-                    <MovieList sectionName={"Nuevos lanzamientos"} />
+                    <MovieList sectionName={"Volver a ver"} />
                 </div>
+                <Footer />
             </div>
         </>
     );

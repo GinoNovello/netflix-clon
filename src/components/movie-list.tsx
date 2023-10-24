@@ -1,6 +1,5 @@
-import {useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {useSpringCarousel} from "node_modules/react-spring-carousel/dist/types";
 
 import moviesController from "@/controllers/movies-controller";
 import {Movie} from "@/types/movies/types";
@@ -25,8 +24,8 @@ export function MovieList({sectionName}: Props) {
     }, [param.id]);
 
     return (
-        <div className="z-20 flex flex-col text-[#E5E5E5] text-3xl max-w-full overflow-x-hidden h-full">
-            <h3 className="py-4 font-netflix-medium">{sectionName}</h3>
+        <div className="inline-flex flex-col text-[#E5E5E5] text-3xl max-w-full h-full z-0">
+            <h3 className="pb-4 font-netflix-medium">{sectionName}</h3>
             <div className="flex gap-2">
                 {movies?.map((movie) => (
                     <img
