@@ -73,6 +73,7 @@ export function Home() {
                 <div className="flex flex-col gap-y-14">
                     <MovieList sectionName={"Nuevos lanzamientos"} />
                     <MovieListNumber sectionName={"Tendencias"} />
+                    <MovieList sectionName={"Nuevos lanzamientos"} />
                 </div>
             </div>
         </>
