@@ -32,10 +32,9 @@ export function MovieListNumber({sectionName}: Props) {
                         index <= 9 && (
                             <div key={movie.id} className="flex items-center min-w-[293px] h-[210px] relative">
                                 <h2
-                                    className={`text-[285px] flex items-center h-[210px] text-black font-netflix-bold pb-3 leading-none 
-                                    ${index === 0 ? "pl-8" : index <= 8 ? "pl-4" : ""} ${
-                                        index === 9 ? "text-[200px]" : ""
-                                    }`}
+                                    className={`flex items-center h-[210px] text-black font-netflix-bold pb-3 ${
+                                        index === 9 ? "text-[220px]" : "text-[285px]"
+                                    } ${index === 0 ? "pl-8" : index <= 8 ? "pl-4" : ""}`}
                                     style={{WebkitTextStroke: "5px #595959"}}
                                 >
                                     {index !== 9 ? (

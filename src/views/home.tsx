@@ -21,6 +21,7 @@ export function Home() {
     };
 
     console.log(moviesData);
+
     useEffect(() => {
         seekMovies();
     }, []);
@@ -72,9 +73,9 @@ export function Home() {
                     </div>
                 )}
                 <div className="flex flex-col gap-y-14">
-                    <MovieList sectionName={"Nuevos lanzamientos"} />
+                    {movies && <MovieList movies={movies} sectionName={"Nuevos lanzamientos"} />}
                     <MovieListNumber sectionName={"Tendencias"} />
-                    <MovieList sectionName={"Volver a ver"} />
+                    {movies && <MovieList movies={movies} sectionName={"Volver a ver"} />}
                 </div>
                 <Footer />
             </div>
