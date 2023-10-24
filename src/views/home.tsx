@@ -57,12 +57,12 @@ export function Home() {
                             <p className="text-2xl py-7">{movies[6].overview}</p>
 
                             <div className="flex gap-4 text-2xl font-netflix-medium">
-                                <button className="flex items-center justify-center gap-3 px-10 py-3 text-black bg-white rounded-md">
+                                <button className="flex items-center justify-center gap-3 px-10 py-3 text-black bg-white rounded-md hover:bg-[#BFC0C0]">
                                     <i className="text-3xl fa-duotone fa-play" />
                                     Reproducir
                                 </button>
 
-                                <button className="bg-[#515254] text-white py-3 gap-3 px-10 flex justify-center items-center rounded-md">
+                                <button className="flex items-center justify-center gap-3 px-10 py-3 text-white bg-[#6D6D6E] rounded-md bg-opacity-70 hover:bg-opacity-40">
                                     <i className="text-3xl fa-regular fa-circle-info" />
                                     Más información
                                 </button>
