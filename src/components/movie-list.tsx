@@ -32,7 +32,7 @@ export function MovieList({sectionName, movies}: Props) {
         slideAmount: 1788,
     });
 
-    useListenToCustomEvent((event) => {
+    useListenToCustomEvent((event: any) => {
         if (event.eventName === "onSlideStartChange") setStartChange(true);
     });
 
