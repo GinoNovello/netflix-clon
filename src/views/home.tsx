@@ -53,7 +53,7 @@ export function Home() {
                     }}
                 />
                 {movies && (
-                    <div className="relative w-full h-full min-h-[calc(100vh-220px)] flex items-center text-white">
+                    <div className="relative w-full h-full min-h-[calc(100vh-220px)] text-white flex items-center">
                         <div className="max-w-[685px]">
                             <h2 className="text-yellow-500 text-7xl font-netflix-bold">{movies[6].title}</h2>
                             <p className="text-2xl py-7">{movies[6].overview}</p>
@@ -74,7 +74,7 @@ export function Home() {
                 )}
                 <div className="flex flex-col gap-y-14">
                     {movies && <MovieList movies={movies} sectionName={"Nuevos lanzamientos"} />}
-                    <MovieListNumber sectionName={"Tendencias"} />
+                    <MovieListNumber sectionName={"Las 10 películas más populares en Argentina hoy"} />
                     {movies && <MovieList movies={movies} sectionName={"Volver a ver"} />}
                 </div>
                 <Footer />
