@@ -16,7 +16,7 @@ export function MovieList({sectionName, movies}: Props) {
         items: movies?.map((movie, index) => ({
             id: index,
             renderItem: (
-                <div className="w-[290px]" to="/player">
+                <div className="w-[290px]">
                     <img
                         alt="image"
                         className="w-full rounded"
