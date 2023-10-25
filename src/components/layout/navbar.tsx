@@ -103,7 +103,7 @@ export function Navbar() {
                         ref={searchRef}
                         autoFocus
                         className={`bg-black transition-all ${inputEffect ? "w-[200px]" : "w-0"}`}
-                        placeholder="search"
+                        placeholder="Títulos, personas, géneros"
                         onChange={(event) => onQueryChange(event?.currentTarget.value)}
                     />
                 )}
