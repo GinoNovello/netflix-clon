@@ -8,6 +8,7 @@ import {Movies} from "./views/movies";
 import {Latest} from "./views/latest";
 import {MyList} from "./views/my-list";
 import {Audio} from "./views/audio";
+import {Player} from "./components/player";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                 <Route element={<Latest />} path="/latest" />;
                 <Route element={<MyList />} path="/list" />;
                 <Route element={<Audio />} path="/audio" />;
+                <Route element={<Player />} path="/player" />;
             </Route>
         </Routes>
     );
