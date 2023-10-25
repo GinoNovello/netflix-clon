@@ -62,7 +62,7 @@ export function Navbar() {
         <nav
             className={`${
                 color ? "bg-[#141414]" : "bg-[#141414]/0"
-            } transition-all duration-500 text-primary flex justify-between items-center h-[68px] px-[60px] sticky top-0 z-10 text-sm`}
+            } transition-all duration-500 text-primary flex justify-between items-center fixed w-full h-[68px] px-[60px] top-0 z-10 text-sm`}
             style={{background: color ? " " : "linear-gradient(180deg, rgba(0,0,0,.7) 10%, transparent)"}}
         >
             <div className="flex items-center gap-11">
@@ -100,7 +100,7 @@ export function Navbar() {
                         ref={searchRef}
                         autoFocus
                         className={`bg-black transition-all ${inputEffect ? "w-[200px]" : "w-0"}`}
-                        placeholder="search"
+                        placeholder="Títulos, personas, géneros"
                         onChange={(event) => onQueryChange(event?.currentTarget.value)}
                     />
                 )}
