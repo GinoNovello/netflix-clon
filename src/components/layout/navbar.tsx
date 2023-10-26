@@ -3,8 +3,15 @@ import {NavLink} from "react-router-dom";
 
 import {ActionsNavbar} from "./actions-navbar";
 
+import {useLanguageStore} from "@/stores/language-store";
+import {navbarTranslate} from "@/i18n/navbar-translates";
+
 export function Navbar() {
     const [color, setColor] = useState(false);
+
+    const changeLanguage = useLanguageStore((state) => state.setLanguage);
+    const language = useLanguageStore((state) => state.languageValue);
+    const textTranslated = navbarTranslate[language];
 
     const changeColor = () => {
         window.scrollY >= 68 ? setColor(true) : setColor(false);
@@ -38,26 +45,48 @@ export function Navbar() {
                 />
                 <ul className="flex gap-5">
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/home"}>
-                        Inicio
+                        {textTranslated.navbar_sections.home}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/series"}>
-                        Series
+                        {textTranslated.navbar_sections.series}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/movies"}>
-                        Películas
+                        {textTranslated.navbar_sections.movies}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/latest"}>
-                        Novedades populares
+                        {textTranslated.navbar_sections.new_popular}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/list"}>
-                        Mi lista
+                        {textTranslated.navbar_sections.mylist}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/audio"}>
-                        Explora por idiomas
+                        {textTranslated.navbar_sections.browse_languages}
                     </NavLink>
                 </ul>
             </div>
-            <ActionsNavbar />
+            <div className="flex items-center gap-3">
+                <ActionsNavbar />
+                <div className="flex items-center" id="searchContainer">
+                    <div className="flex items-center gap-2">
+                        <span
+                            className={`cursor-pointer transition-all ${
+                                language === "EN" ? "text-white font-netflix-bold" : "text-white/50 font-netflix"
+                            }`}
+                            onClick={() => changeLanguage("EN")}
+                        >
+                            EN 🔫
+                        </span>
+                        <span
+                            className={`cursor-pointer transition-all ${
+                                language === "ES" ? "text-white font-netflix-bold" : "text-white/50 font-netflix"
+                            }`}
+                            onClick={() => changeLanguage("ES")}
+                        >
+                            ES 🐂
+                        </span>
+                    </div>
+                </div>
+            </div>
         </nav>
     );
 }

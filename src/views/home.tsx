@@ -6,10 +6,14 @@ import {MovieList} from "../components/movie-list";
 import {MovieListNumber} from "@/components/movie-list-number";
 import moviesController from "@/controllers/movies-controller";
 import {Movie} from "@/types/movies/types";
+import {homeTranslate} from "@/i18n/home-translates";
+import {useLanguageStore} from "@/stores/language-store";
 
 export function Home() {
     const [movies, setMovies] = useState<Movie[] | undefined>(undefined);
 
+    const language = useLanguageStore((state) => state.languageValue);
+    const textTranslated = homeTranslate[language];
     const seekMovies = async () => {
         const res = await moviesController.getMovies();
 
@@ -26,7 +30,7 @@ export function Home() {
         <>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Página de inicio — Netflix</title>
+                <title>{textTranslated.home_title}</title>
                 <link href="http://localhost:5173/home" rel="canonical" />
             </Helmet>
             <div className="flex flex-col max-w-full px-[60px]">
@@ -57,26 +61,28 @@ export function Home() {
                             <div className="flex gap-4 text-2xl font-netflix-medium">
                                 <button className="flex items-center justify-center gap-3 px-10 py-3 text-black bg-white rounded-md hover:bg-[#BFC0C0]">
                                     <i className="text-3xl fa-duotone fa-play" />
-                                    Reproducir
+                                    {textTranslated.header_texts.play_button}
                                 </button>
 
                                 <button className="flex items-center justify-center gap-3 px-10 py-3 text-white bg-[#6D6D6E] rounded-md bg-opacity-70 hover:bg-opacity-40">
                                     <i className="text-3xl fa-regular fa-circle-info" />
-                                    Más información
+                                    {textTranslated.header_texts.more_info}
                                 </button>
                             </div>
                         </div>
                     </div>
                 )}
                 <div className="flex flex-col gap-y-14">
-                    {movies && <MovieList movies={movies} sectionName={"Nuevos lanzamientos"} />}
+                    {movies && <MovieList movies={movies} sectionName={textTranslated.sections_name.latest} />}
                     {movies && (
                         <MovieListNumber
                             movies={movies}
-                            sectionName={"Las 10 películas más populares en Argentina hoy"}
+                            sectionName={textTranslated.sections_name.most_viewed_movies}
                         />
                     )}
-                    {movies && <MovieList movies={movies} sectionName={"Volver a ver"} />}
+                    {movies && (
+                        <MovieList movies={movies} sectionName={textTranslated.sections_name.see_again_movies} />
+                    )}
                 </div>
             </div>
         </>
