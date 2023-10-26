@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import moviesController from "@/controllers/movies-controller";
 import {useDebounce} from "@/hooks/useDebounce";
 import {useMoviesStore} from "@/stores/movies-store";
+import {useLanguageStore} from "@/stores/language-store";
 
 export function Navbar() {
     const [color, setColor] = useState(false);
@@ -12,7 +13,8 @@ export function Navbar() {
     const setMovieData = useMoviesStore((state) => state.setSearchMovieData);
     const searchRef = useRef<null>(null);
     const {debouncedValue, onQueryChange} = useDebounce(1000);
-
+    const changeLanguage = useLanguageStore((state) => state.setLanguage);
+    const language = useLanguageStore((state) => state.languageValue);
     const clickOutside = (event: any) => {
         const searchBarId = event.target.parentElement.id === "searchContainer";
 
@@ -114,6 +116,24 @@ export function Navbar() {
                         setOpenSearch(!openSearch);
                     }}
                 />
+                <div className="flex items-center gap-2">
+                    <span
+                        className={`cursor-pointer transition-all ${
+                            language === "EN" ? "text-white font-netflix-bold" : "text-white/50 font-netflix"
+                        }`}
+                        onClick={() => changeLanguage("EN")}
+                    >
+                        EN 🔫
+                    </span>
+                    <span
+                        className={`cursor-pointer transition-all ${
+                            language === "ES" ? "text-white font-netflix-bold" : "text-white/50 font-netflix"
+                        }`}
+                        onClick={() => changeLanguage("ES")}
+                    >
+                        ES 🐂
+                    </span>
+                </div>
             </div>
         </nav>
     );
