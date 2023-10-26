@@ -5,6 +5,7 @@ import moviesController from "@/controllers/movies-controller";
 import {useDebounce} from "@/hooks/useDebounce";
 import {useMoviesStore} from "@/stores/movies-store";
 import {useLanguageStore} from "@/stores/language-store";
+import {navbarTranslate} from "@/i18n/navbar-translates";
 
 export function Navbar() {
     const [color, setColor] = useState(false);
@@ -15,6 +16,7 @@ export function Navbar() {
     const {debouncedValue, onQueryChange} = useDebounce(1000);
     const changeLanguage = useLanguageStore((state) => state.setLanguage);
     const language = useLanguageStore((state) => state.languageValue);
+    const textTranslated = navbarTranslate[language];
     const clickOutside = (event: any) => {
         const searchBarId = event.target.parentElement.id === "searchContainer";
 
@@ -80,22 +82,22 @@ export function Navbar() {
                 />
                 <ul className="flex gap-5">
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/home"}>
-                        Inicio
+                        {textTranslated.navbar_sections.home}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/series"}>
-                        Series
+                        {textTranslated.navbar_sections.series}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/movies"}>
-                        Películas
+                        {textTranslated.navbar_sections.movies}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/latest"}>
-                        Novedades populares
+                        {textTranslated.navbar_sections.new_popular}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/list"}>
-                        Mi lista
+                        {textTranslated.navbar_sections.mylist}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/audio"}>
-                        Explora por idiomas
+                        {textTranslated.navbar_sections.browse_languages}
                     </NavLink>
                 </ul>
             </div>
