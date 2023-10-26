@@ -3,17 +3,15 @@ import {Helmet} from "react-helmet";
 
 import {MovieList} from "../components/movie-list";
 
+import {MovieListNumber} from "@/components/movie-list-number";
 import moviesController from "@/controllers/movies-controller";
 import {Movie} from "@/types/movies/types";
-import {useMoviesStore} from "@/stores/movies-store";
-import {MovieListNumber} from "@/components/movie-list-number";
-import {Footer} from "@/components/footer";
 import {homeTranslate} from "@/i18n/home-translates";
 import {useLanguageStore} from "@/stores/language-store";
 
 export function Home() {
     const [movies, setMovies] = useState<Movie[] | undefined>(undefined);
-    const moviesData = useMoviesStore((state) => state.searchMoviesData);
+
     const language = useLanguageStore((state) => state.languageValue);
     const textTranslated = homeTranslate[language];
     const seekMovies = async () => {
@@ -23,8 +21,6 @@ export function Home() {
             setMovies(res.data.results);
         }
     };
-
-    console.log(moviesData);
 
     useEffect(() => {
         seekMovies();
@@ -78,12 +74,16 @@ export function Home() {
                 )}
                 <div className="flex flex-col gap-y-14">
                     {movies && <MovieList movies={movies} sectionName={textTranslated.sections_name.latest} />}
-                    <MovieListNumber sectionName={textTranslated.sections_name.most_viewed_movies} />
+                    {movies && (
+                        <MovieListNumber
+                            movies={movies}
+                            sectionName={textTranslated.sections_name.most_viewed_movies}
+                        />
+                    )}
                     {movies && (
                         <MovieList movies={movies} sectionName={textTranslated.sections_name.see_again_movies} />
                     )}
                 </div>
-                <Footer />
             </div>
         </>
     );
