@@ -1,59 +1,19 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 
-import moviesController from "@/controllers/movies-controller";
-import {useDebounce} from "@/hooks/useDebounce";
-import {useMoviesStore} from "@/stores/movies-store";
+import {ActionsNavbar} from "./actions-navbar";
 
 export function Navbar() {
     const [color, setColor] = useState(false);
-    const [openSearch, setOpenSearch] = useState(false);
-    const [inputEffect, setInputEffect] = useState(false);
-    const setMovieData = useMoviesStore((state) => state.setSearchMovieData);
-    const searchRef = useRef<null>(null);
-    const {debouncedValue, onQueryChange} = useDebounce(1000);
-
-    const clickOutside = (event: any) => {
-        const searchBarId = event.target.parentElement.id === "searchContainer";
-
-        searchBarId
-            ? setOpenSearch(true)
-            : setTimeout(() => {
-                  setOpenSearch(false);
-              }, 150);
-        setInputEffect(false);
-    };
 
     const changeColor = () => {
         window.scrollY >= 68 ? setColor(true) : setColor(false);
     };
 
-    const handleEffect = () => {
-        setTimeout(() => {
-            setInputEffect(true);
-        }, 10);
-    };
-
-    const querySearch = async () => {
-        const res = await moviesController.searchMovies({query: debouncedValue});
-
-        if (res.ok) {
-            setMovieData(res.data.results);
-        }
-    };
-
-    useEffect(() => {
-        debouncedValue && querySearch();
-    }, [debouncedValue]);
-
     useEffect(() => {
         window.addEventListener("scroll", changeColor);
         () => window.removeEventListener("scroll", changeColor);
     }, []);
-
-    useEffect(() => {
-        openSearch ? window.addEventListener("click", clickOutside) : window.removeEventListener("click", clickOutside);
-    }, [openSearch]);
 
     const navActiveStyle = "text-white font-netflix-medium";
     const navDefaultStyle = "hover:text-[#B3B3B3] cursor-pointer transition-all";
@@ -97,24 +57,7 @@ export function Navbar() {
                     </NavLink>
                 </ul>
             </div>
-            <div className="flex items-center" id="searchContainer">
-                {openSearch && (
-                    <input
-                        ref={searchRef}
-                        autoFocus
-                        className={`bg-black transition-all ${inputEffect ? "w-[200px]" : "w-0"}`}
-                        placeholder="Títulos, personas, géneros"
-                        onChange={(event) => onQueryChange(event?.currentTarget.value)}
-                    />
-                )}
-                <i
-                    className="text-xl cursor-pointer fa-regular fa-magnifying-glass"
-                    onClick={() => {
-                        handleEffect();
-                        setOpenSearch(!openSearch);
-                    }}
-                />
-            </div>
+            <ActionsNavbar />
         </nav>
     );
 }

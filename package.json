@@ -20,7 +20,8 @@
         "react-dom": "^18.2.0",
         "react-helmet": "^6.1.0",
         "react-router-dom": "^6.17.0",
-        "react-spring-carousel": "^3.0.0-beta090.36",
+        "react-spring-carousel": "^2.0.19",
+        "use-query-params": "^2.2.1",
         "zustand": "^4.4.3"
     },
     "devDependencies": {

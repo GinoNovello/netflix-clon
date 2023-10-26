@@ -3,15 +3,13 @@ import {Helmet} from "react-helmet";
 
 import {MovieList} from "../components/movie-list";
 
+import {MovieListNumber} from "@/components/movie-list-number";
 import moviesController from "@/controllers/movies-controller";
 import {Movie} from "@/types/movies/types";
-import {useMoviesStore} from "@/stores/movies-store";
-import {MovieListNumber} from "@/components/movie-list-number";
-import {Footer} from "@/components/footer";
 
 export function Home() {
     const [movies, setMovies] = useState<Movie[] | undefined>(undefined);
-    const moviesData = useMoviesStore((state) => state.searchMoviesData);
+
     const seekMovies = async () => {
         const res = await moviesController.getMovies();
 
@@ -19,8 +17,6 @@ export function Home() {
             setMovies(res.data.results);
         }
     };
-
-    console.log(moviesData);
 
     useEffect(() => {
         seekMovies();
@@ -74,10 +70,14 @@ export function Home() {
                 )}
                 <div className="flex flex-col gap-y-14">
                     {movies && <MovieList movies={movies} sectionName={"Nuevos lanzamientos"} />}
-                    <MovieListNumber sectionName={"Las 10 películas más populares en Argentina hoy"} />
+                    {movies && (
+                        <MovieListNumber
+                            movies={movies}
+                            sectionName={"Las 10 películas más populares en Argentina hoy"}
+                        />
+                    )}
                     {movies && <MovieList movies={movies} sectionName={"Volver a ver"} />}
                 </div>
-                <Footer />
             </div>
         </>
     );
