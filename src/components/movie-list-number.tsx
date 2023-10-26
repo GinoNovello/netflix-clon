@@ -11,6 +11,7 @@ interface Props {
 export function MovieListNumber({sectionName, movies}: Props) {
     const [startChange, setStartChange] = useState(false);
     const [canClick, setCanClick] = useState(true);
+    const [isFirstItem, setIsFirtsItem] = useState(true);
 
     const {carouselFragment, slideToPrevItem, slideToNextItem, useListenToCustomEvent} = useSpringCarousel({
         slideType: "fluid",
@@ -44,7 +45,7 @@ export function MovieListNumber({sectionName, movies}: Props) {
         itemsPerSlide: 6,
         withLoop: true,
         startEndGutter: startChange ? 60 : 0,
-        slideAmount: 1788,
+        slideAmount: isFirstItem ? 1192 : 1788,
     });
 
     useListenToCustomEvent((event: any) => {
@@ -82,6 +83,7 @@ export function MovieListNumber({sectionName, movies}: Props) {
                     onClick={() => {
                         slideToNextItem();
                         setCanClick(false);
+                        setIsFirtsItem(!isFirstItem);
                     }}
                 >
                     <i className="fa-regular fa-chevron-right" />
