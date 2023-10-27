@@ -13,8 +13,8 @@ export function MovieList({sectionName, movies}: Props) {
     const [canClick, setCanClick] = useState(true);
     const {carouselFragment, slideToPrevItem, slideToNextItem, useListenToCustomEvent} = useSpringCarousel({
         slideType: "fluid",
-        items: movies?.map((movie, index) => ({
-            id: index,
+        items: movies?.map((movie) => ({
+            id: movie.backdrop_path,
             renderItem: (
                 <div className="w-[290px]">
                     <img
@@ -26,7 +26,7 @@ export function MovieList({sectionName, movies}: Props) {
             ),
         })),
         gutter: 8,
-        itemsPerSlide: 6,
+
         withLoop: true,
         startEndGutter: startChange ? 60 : 0,
         slideAmount: 1788,
