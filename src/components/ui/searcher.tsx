@@ -48,7 +48,7 @@ export function Searcher() {
 
     return (
         <>
-            <div className="flex items-center" id="searchContainer">
+            <div className="flex items-center cursor-pointer" id="searchContainer">
                 {openSearch && (
                     <input
                         ref={searchRef}
