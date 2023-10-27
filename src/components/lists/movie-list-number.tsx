@@ -19,20 +19,7 @@ interface Props {
 export function MovieListNumber({sectionName, movies}: Props) {
     const [startChange, setStartChange] = useState(false);
     const [canClick, setCanClick] = useState(true);
-    const combi = [
-        {
-            nombre: "pochi",
-            backdrop_path: "kevin",
-        },
-        {
-            nombre: "martu",
-            backdrop_path: "kevon",
-        },
-        {
-            nombre: "mirta",
-            backdrop_path: "kevua",
-        },
-    ];
+
     const [isHover, setIsHover] = useState<CardHover>({
         hover: false,
         index: null,
