@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {useSpringCarousel} from "react-spring-carousel";
 
-import {CardWrapper} from "./card-wrapper";
+import {CardWrapper} from "../card-wrapper";
 
 import {Movie} from "@/types/movies/types";
 
@@ -24,6 +24,7 @@ export function MovieListNumber({sectionName, movies}: Props) {
         index: null,
         movie: undefined,
     });
+    const [isFirstItem, setIsFirtsItem] = useState(true);
 
     const {carouselFragment, slideToPrevItem, slideToNextItem, useListenToCustomEvent} = useSpringCarousel({
         slideType: "fluid",
@@ -78,7 +79,7 @@ export function MovieListNumber({sectionName, movies}: Props) {
         itemsPerSlide: 6,
         withLoop: true,
         startEndGutter: startChange ? 60 : 0,
-        slideAmount: 1788,
+        slideAmount: isFirstItem ? 1192 : 1788,
     });
 
     useListenToCustomEvent((event: any) => {
@@ -116,6 +117,7 @@ export function MovieListNumber({sectionName, movies}: Props) {
                     onClick={() => {
                         slideToNextItem();
                         setCanClick(false);
+                        setIsFirtsItem(!isFirstItem);
                     }}
                 >
                     <i className="fa-regular fa-chevron-right" />

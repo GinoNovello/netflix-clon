@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 import {Helmet} from "react-helmet";
 
-import {MovieList} from "../components/movie-list";
+import {MovieList} from "../components/lists/movie-list";
 
-import {MovieListNumber} from "@/components/movie-list-number";
+import {MovieListNumber} from "@/components/lists/movie-list-number";
 import moviesController from "@/controllers/movies-controller";
 import {Movie} from "@/types/movies/types";
 import {homeTranslate} from "@/i18n/home-translates";
@@ -56,7 +56,7 @@ export function Home() {
                 {movies && (
                     <div className="relative w-full h-full min-h-[calc(100vh-220px)] text-white flex items-center">
                         <div className="max-w-[685px]">
-                            <h2 className="text-yellow-500 text-7xl font-netflix-bold">{movies[6].title}</h2>
+                            <h2 className="text-yellow-400 text-7xl font-netflix-bold">{movies[6].title}</h2>
                             <p className="text-2xl py-7">{movies[6].overview}</p>
 
                             <div className="flex gap-4 text-2xl font-netflix-medium">
