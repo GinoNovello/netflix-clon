@@ -101,7 +101,6 @@ export function MovieListNumber({sectionName, movies}: Props) {
     useListenToCustomEvent((event: any) => {
         if (event.eventName === "onSlideStartChange") {
             setStartChange(true);
-            console.log(event);
         }
     });
 
