@@ -9,7 +9,7 @@ import {Movies} from "./views/movies";
 import {Latest} from "./views/latest";
 import {MyList} from "./views/my-list";
 import {Audio} from "./views/audio";
-import {Player} from "./components/player";
+import {Player} from "./views/player";
 import {Search} from "./views/search";
 import {useMoviesStore} from "./stores/movies-store";
 
