@@ -5,12 +5,6 @@ import {CardWrapper} from "../card-wrapper";
 
 import {Movie} from "@/types/movies/types";
 
-interface CardHover {
-    hover: boolean;
-    index: null | number;
-    movie: Movie | undefined;
-}
-
 interface Props {
     sectionName: string;
     movies: Movie[];
@@ -19,44 +13,22 @@ interface Props {
 export function MovieListNumber({sectionName, movies}: Props) {
     const [startChange, setStartChange] = useState(false);
     const [canClick, setCanClick] = useState(true);
-
-    const [isHover, setIsHover] = useState<CardHover>({
-        hover: false,
-        index: null,
-        movie: undefined,
-    });
     const [isFirstItem, setIsFirtsItem] = useState(true);
-
+    const [isHover, setIsHover] = useState(false);
     const {carouselFragment, slideToPrevItem, slideToNextItem, useListenToCustomEvent} = useSpringCarousel({
         slideType: "fluid",
         items: movies.slice(0, 10).map((movie, index) => {
             return {
                 id: movie.backdrop_path,
                 renderItem: (
-                    <div
-                        className="flex items-center w-[290px] relative"
-                        onMouseOut={() =>
-                            setIsHover({
-                                hover: false,
-                                index: null,
-                                movie: undefined,
-                            })
-                        }
-                        onMouseOver={() =>
-                            setIsHover({
-                                hover: true,
-                                index: index,
-                                movie: movie,
-                            })
-                        }
-                    >
+                    <div className="flex items-center w-[290px] relative">
                         <CardWrapper
                             image={`http://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
-                            isHover={isHover.hover && isHover.index === index}
+                            setIsHover={setIsHover}
                         >
                             <h2
-                                className={`flex items-center h-[210px] text-black font-netflix-bold pb-3 ${
-                                    index === 9 ? "text-[220px]" : "text-[285px]"
+                                className={`flex items-center h-[210px] text-black font-netflix-bold pb-4 ${
+                                    index === 9 ? "text-[220px]" : "text-[283px]"
                                 } ${index === 0 ? "pl-8" : index <= 8 ? "pl-4" : ""}`}
                                 style={{WebkitTextStroke: "5px #595959"}}
                             >
@@ -79,14 +51,14 @@ export function MovieListNumber({sectionName, movies}: Props) {
             };
         }),
         gutter: 8,
-
         withLoop: true,
         startEndGutter: startChange ? 60 : 0,
         slideAmount: isFirstItem ? 1192 : 1788,
     });
 
     useListenToCustomEvent((event: any) => {
-        if (event.eventName === "onSlideStartChange") {
+        if (event.eventName === "onSlideStartChange" && !isHover) {
+            console.log(event);
             setStartChange(true);
         }
     });
@@ -115,8 +87,9 @@ export function MovieListNumber({sectionName, movies}: Props) {
                 >
                     <i className="fa-regular fa-chevron-left" />
                 </button>
-                <div className={`overflow-x-hidden ${startChange ? "" : "ml-[60px]"}`}>{carouselFragment}</div>{" "}
-                {/* AGREGAR overflow-x-hidden  */}
+                <div className={`max-h-[210px] ${isHover ? "" : "overflow-hidden"} ${startChange ? "" : "ml-[60px]"}`}>
+                    {carouselFragment}
+                </div>{" "}
                 <button
                     className="absolute right-[17px] h-full text-6xl text-transparent transition-all hover:text-white hover:bg-black/70 w-[55px] z-10"
                     disabled={!canClick}
