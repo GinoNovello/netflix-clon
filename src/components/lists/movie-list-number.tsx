@@ -54,11 +54,11 @@ export function MovieListNumber({sectionName, movies}: Props) {
         withLoop: true,
         startEndGutter: startChange ? 60 : 0,
         slideAmount: isFirstItem ? 1192 : 1788,
+        disableGestures: true,
     });
 
     useListenToCustomEvent((event: any) => {
         if (event.eventName === "onSlideStartChange" && !isHover) {
-            console.log(event);
             setStartChange(true);
         }
     });

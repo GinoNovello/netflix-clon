@@ -47,25 +47,25 @@ export function Searcher() {
     }, [openSearch]);
 
     return (
-        <>
-            <div className="flex items-center cursor-pointer" id="searchContainer">
-                {openSearch && (
-                    <input
-                        ref={searchRef}
-                        autoFocus
-                        className={`bg-black transition-all ${inputEffect ? "w-[200px]" : "w-0"}`}
-                        placeholder="Títulos, personas, géneros"
-                        onChange={(event) => onQueryChange(event?.currentTarget.value)}
-                    />
-                )}
-                <i
-                    className="text-xl cursor-pointer fa-regular fa-magnifying-glass"
-                    onClick={() => {
-                        handleEffect();
-                        !openSearch && setOpenSearch(!openSearch);
-                    }}
+        <button className="flex items-center cursor-pointer relative" id="searchContainer">
+            <i
+                className="text-xl cursor-pointer fa-regular fa-magnifying-glass"
+                onClick={() => {
+                    handleEffect();
+                    !openSearch && setOpenSearch(!openSearch);
+                }}
+            />
+            {openSearch && (
+                <input
+                    ref={searchRef}
+                    autoFocus
+                    className={`bg-black transition-all duration-500 outline-none ${
+                        inputEffect ? "w-[230px] py-2" : "w-0"
+                    }`}
+                    placeholder="Títulos, personas, géneros"
+                    onChange={(event) => onQueryChange(event?.currentTarget.value)}
                 />
-            </div>
-        </>
+            )}
+        </button>
     );
 }
