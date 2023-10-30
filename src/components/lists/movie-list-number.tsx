@@ -21,7 +21,11 @@ export function MovieListNumber({sectionName, movies}: Props) {
             return {
                 id: movie.backdrop_path,
                 renderItem: (
-                    <div className="flex items-center w-[290px] relative">
+                    <div
+                        className={`${
+                            index === 9 && !startChange ? "opacity-0" : ""
+                        } flex items-center w-[290px] relative`}
+                    >
                         <CardWrapper
                             image={`http://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
                             setIsHover={setIsHover}

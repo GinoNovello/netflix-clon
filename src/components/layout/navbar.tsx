@@ -28,7 +28,7 @@ export function Navbar() {
         <nav
             className={`${
                 color ? "bg-[#141414]" : "bg-[#141414]/0"
-            } transition-all duration-500 text-primary flex justify-between items-center h-[68px] px-[60px] fixed top-0 z-10 text-sm w-full
+            } transition-all duration-500 text-[#E5E5E5] flex justify-between items-center h-[68px] px-[60px] fixed top-0 z-20 text-sm w-full
             `}
             style={{
                 background: color ? "" : "linear-gradient(180deg, rgba(0,0,0,.7) 10%, transparent)",
