@@ -21,6 +21,7 @@ export function MovieList({sectionName, movies}: Props) {
             renderItem: (
                 <div className={`${movies.length === index + 1 && !startChange ? "opacity-0" : ""} w-[290px]`}>
                     <CardWrapper
+                        genres={movie.genre_ids}
                         image={`http://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
                         setIsHover={setIsHover}
                     >
