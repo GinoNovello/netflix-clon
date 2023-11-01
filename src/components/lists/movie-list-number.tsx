@@ -26,11 +26,7 @@ export function MovieListNumber({sectionName, movies}: Props) {
                             index === 9 && !startChange ? "opacity-0" : ""
                         } flex items-center w-[290px] relative`}
                     >
-                        <CardWrapper
-                            genres={movie.genre_ids}
-                            image={`http://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
-                            setIsHover={setIsHover}
-                        >
+                        <CardWrapper genres={movie.genre_ids} movie={movie} setIsHover={setIsHover}>
                             <h2
                                 className={`flex items-center h-[210px] text-black font-netflix-bold pb-4 ${
                                     index === 9 ? "text-[220px]" : "text-[283px]"
@@ -80,7 +76,7 @@ export function MovieListNumber({sectionName, movies}: Props) {
     }, [canClick]);
 
     return (
-        <div className="flex flex-col text-[#E5E5E5] text-3xl max-w-full h-full">
+        <div className="flex flex-col text-[#E5E5E5] text-3xl max-w-full h-full -ml-[60px]">
             <h3 className="pb-4 font-netflix-medium">{sectionName}</h3>
             <div className="relative flex w-screen -ml-[60px] ">
                 <button

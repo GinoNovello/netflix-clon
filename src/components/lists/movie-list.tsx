@@ -20,11 +20,7 @@ export function MovieList({sectionName, movies}: Props) {
             id: movie.backdrop_path,
             renderItem: (
                 <div className={`${movies.length === index + 1 && !startChange ? "opacity-0" : ""} w-[290px]`}>
-                    <CardWrapper
-                        genres={movie.genre_ids}
-                        image={`http://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
-                        setIsHover={setIsHover}
-                    >
+                    <CardWrapper genres={movie.genre_ids} movie={movie} setIsHover={setIsHover}>
                         <img
                             alt="image"
                             className="w-full rounded"
@@ -57,7 +53,7 @@ export function MovieList({sectionName, movies}: Props) {
     }, [canClick]);
 
     return (
-        <div className="inline-flex flex-col text-[#E5E5E5] text-3xl max-w-full h-full z-10 group">
+        <div className="inline-flex flex-col text-[#E5E5E5] text-3xl max-w-full h-full z-10 group -ml-[60px]">
             <div className="flex items-baseline">
                 <h3 className="pb-4 font-netflix-medium text-[1.4vw]">{sectionName}</h3>
                 <span className="hidden px-3 text-[#54B9C5] text-[0.9vw] group-hover:flex transition-all cursor-pointer">
