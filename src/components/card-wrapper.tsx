@@ -1,5 +1,7 @@
 import {Dispatch, SetStateAction, useRef, useState} from "react";
 
+import {useListStore} from "@/stores/list-store";
+
 interface Props {
     image: string;
     children: React.ReactNode;
@@ -8,6 +10,8 @@ interface Props {
 
 export function CardWrapper({image, setIsHover, children}: Props) {
     const [showCard, setShowCard] = useState(false);
+
+    const listStore = useListStore((state) => state.addToList);
 
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
