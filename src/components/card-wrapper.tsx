@@ -8,7 +8,7 @@ import {Movie} from "@/types/movies/types";
 
 interface Props {
     children: React.ReactNode;
-    setIsHover: Dispatch<SetStateAction<boolean>>;
+    setIsHover?: Dispatch<SetStateAction<boolean>>;
     genres: (keyof typeof movieGenres)[];
     movie: Movie;
 }
@@ -23,7 +23,7 @@ export function CardWrapper({movie, setIsHover, children, genres}: Props) {
     const mouseLeave = () => {
         if (timerRef.current) clearTimeout(timerRef.current);
         timerRef.current = setTimeout(() => {
-            setIsHover(false);
+            setIsHover && setIsHover(false);
             setShowCard(false);
         }, 150);
     };
@@ -32,7 +32,7 @@ export function CardWrapper({movie, setIsHover, children, genres}: Props) {
         if (timerRef.current) clearTimeout(timerRef.current);
         timerRef.current = setTimeout(() => {
             setShowCard(true);
-            setIsHover(true);
+            setIsHover && setIsHover(true);
         }, 300);
     };
 
