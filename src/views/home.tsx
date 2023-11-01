@@ -33,7 +33,7 @@ export function Home() {
                 <title>{textTranslated.home_title}</title>
                 <link href="http://localhost:5173/home" rel="canonical" />
             </Helmet>
-            <div className="flex flex-col max-w-full px-[60px]">
+            <div className="flex flex-col max-w-full">
                 <div className="absolute top-0 left-0 w-full h-full">
                     {movies && (
                         <img
