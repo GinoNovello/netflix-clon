@@ -1,3 +1,5 @@
+import {movieGenres} from "../genres/types";
+
 export interface Movie {
     adult: boolean;
     backdrop_path: string;
@@ -6,6 +8,7 @@ export interface Movie {
     original_title: string;
     overview: string;
     popularity: number;
+    genre_ids: (keyof typeof movieGenres)[];
     poster_path: string;
     release_date: string;
     title: string;

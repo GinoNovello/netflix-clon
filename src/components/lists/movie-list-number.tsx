@@ -27,6 +27,7 @@ export function MovieListNumber({sectionName, movies}: Props) {
                         } flex items-center w-[290px] relative`}
                     >
                         <CardWrapper
+                            genres={movie.genre_ids}
                             image={`http://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
                             setIsHover={setIsHover}
                         >
