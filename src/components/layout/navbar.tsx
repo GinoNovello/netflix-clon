@@ -56,7 +56,7 @@ export function Navbar() {
                         {textTranslated.navbar_sections.new_popular}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/list"}>
-                        {textTranslated.navbar_sections.mylist}
+                        {textTranslated.navbar_sections.my_list}
                     </NavLink>
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/audio"}>
                         {textTranslated.navbar_sections.browse_languages}

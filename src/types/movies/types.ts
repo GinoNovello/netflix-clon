@@ -81,7 +81,7 @@ export interface MovieDetail {
 }
 export interface SearchMovieData {
     adult: boolean;
-    genre_ids: number[];
+    genre_ids: (keyof typeof movieGenres)[];
     backdrop_path: string;
     id: number;
     original_language: string;
