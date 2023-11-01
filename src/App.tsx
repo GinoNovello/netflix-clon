@@ -12,9 +12,12 @@ import {Audio} from "./views/audio";
 import {Player} from "./views/player";
 import {Search} from "./views/search";
 import {useMoviesStore} from "./stores/movies-store";
+import {useListStore} from "./stores/list-store";
 
 function App() {
     const [firstRender, setFirstRender] = useState(false);
+
+    const list = useListStore((state) => state.list);
 
     const moviesData = useMoviesStore((state) => state.searchMoviesData);
     const navigate = useNavigate();
@@ -27,6 +30,10 @@ function App() {
             firstRender && window.history.back();
         }
     }, [moviesData]);
+
+    useEffect(() => {
+        localStorage.setItem("MyList", JSON.stringify(list));
+    }, [list]);
 
     return (
         <Routes>

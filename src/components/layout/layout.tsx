@@ -7,7 +7,7 @@ export function Layout() {
     return (
         <div className="bg-[#141414] min-h-screen justify-between flex flex-col font-netflix overflow-x-hidden pt-[68px]">
             <Navbar />
-            <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full px-[60px]">
                 <Outlet />
             </div>
             <Footer />
