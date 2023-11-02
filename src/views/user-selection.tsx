@@ -2,13 +2,13 @@ import {Link} from "react-router-dom";
 
 export function UserSelection() {
     return (
-        <div className="flex flex-col items-center justify-center text-white bg-[#141414] font-netflix h-screen w-screen">
+        <div className="flex flex-col items-center justify-center w-screen h-screen text-white bg-custom-black font-netflix">
             <span className="text-[67px] py-11">¿Quién está viendo ahora?</span>
             <Link
-                className="text-[#808080] relative hover:text-[#E5E5E5] text-2xl gap-3 flex flex-col items-center"
+                className="text-[#808080] relative hover:text-custom-white text-2xl gap-3 flex flex-col items-center"
                 to={"/home"}
             >
-                <div className="absolute top-0 left-0 w-[192px] h-[192px] bg-transparent hover:border-[#E5E5E5] hover:border-[4px] rounded" />
+                <div className="absolute top-0 left-0 w-[192px] h-[192px] bg-transparent hover:border-custom-white hover:border-[4px] rounded" />
                 <img alt="user image" className="w-[192px] rounded" src="/User1.png" />
                 <span>Usuario</span>
             </Link>

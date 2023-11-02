@@ -9,7 +9,8 @@ export default {
                 "netflix-medium": ["Netflix-Medium", "sans"],
             },
             colors: {
-                primary: "#e5e5e5",
+                "custom-white": "#e5e5e5",
+                "custom-black": "#141414",
             },
             keyframes: {
                 slideDownAndFade: {

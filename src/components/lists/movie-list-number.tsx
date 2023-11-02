@@ -76,7 +76,7 @@ export function MovieListNumber({sectionName, movies}: Props) {
     }, [canClick]);
 
     return (
-        <div className="flex flex-col text-[#E5E5E5] text-3xl max-w-full h-full">
+        <div className="flex flex-col h-full max-w-full text-3xl text-custom-white">
             <h3 className="pb-4 font-netflix-medium">{sectionName}</h3>
             <div className="relative flex w-screen -ml-[60px] ">
                 <button
