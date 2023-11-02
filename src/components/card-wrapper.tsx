@@ -39,16 +39,18 @@ export function CardWrapper({movie, setIsHover, children, genres}: Props) {
     return (
         <div onMouseOut={mouseLeave} onMouseOver={mouseEnter}>
             {showCard ? (
-                <div className="bg-[#181818] rounded shadow shadow-black absolute hover:-translate-y-12 top-0 transition-all duration-150 ease-in hover:scale-150 hover:duration-300 hover:ease-out z-30">
+                <div className="bg-[#181818] hover:cursor-pointer text-custom-white rounded shadow shadow-black absolute hover:-translate-y-12 top-0 transition-all duration-150 ease-in hover:scale-150 hover:duration-300 hover:ease-out z-30">
                     <img alt="" className="rounded-t" src={`http://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} />
                     <div className="flex flex-col p-4 text-[10px]">
                         <div className="flex justify-between">
                             <div className="flex gap-4">
-                                <i className="text-xl fa-duotone fa-play flex items-center justify-center text-black bg-white rounded-full w-7 h-7 hover:bg-[#E5E5E5]" />
-                                <i
-                                    className="text-3xl fa-sharp fa-solid fa-plus bg-[#222222] rounded-full w-7 h-7 flex items-center justify-center border-2 border-[#8B8B8B] hover:border-white"
-                                    onClick={() => addToList(movie)}
-                                />
+                                <i className="flex items-center justify-center text-xl text-black bg-white rounded-full fa-duotone fa-play w-7 h-7 hover:bg-custom-white" />
+                                <TooltipWrapper text={"Agregar a Mi lista"}>
+                                    <i
+                                        className="text-[26px] fa-sharp fa-thin fa-plus bg-[#222222] rounded-full w-7 h-7 flex items-center justify-center border-2 border-[#8B8B8B] hover:border-white"
+                                        onClick={() => addToList(movie)}
+                                    />
+                                </TooltipWrapper>
                                 <i className="text-base fa-light fa-thumbs-up bg-[#222222] rounded-full w-7 h-7 flex items-center justify-center border-2 border-[#8B8B8B] hover:border-white" />
                             </div>
                             <TooltipWrapper text={"Más información"}>
@@ -58,7 +60,7 @@ export function CardWrapper({movie, setIsHover, children, genres}: Props) {
                         <div>
                             <i className="fa-light fa-high-definition fa-lg fa-thin rounded-xl" />
                         </div>
-                        <div className="flex gap-2 items-center">
+                        <div className="flex items-center gap-2">
                             {genres.map((genre, index) => (
                                 <Fragment key={index}>
                                     {movieGenres[genre]}

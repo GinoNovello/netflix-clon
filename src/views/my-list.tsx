@@ -17,20 +17,22 @@ export function MyList() {
             </Helmet>
             <h4
                 className={`${
-                    isVisible ? "bg-[#141414]" : "bg-transparent"
+                    isVisible ? "bg-custom-black" : "bg-transparent"
                 } text-white text-4xl h-[68px] transition-all duration-500 w-full fixed flex items-center`}
             >
                 Mi lista
             </h4>
             <div className="grid gap-x-[6px] gap-y-20 grid-cols-6 pt-52">
                 {list.map((movie) => (
-                    <CardWrapper key={movie.id} genres={movie.genre_ids} movie={movie}>
-                        <img
-                            alt="image"
-                            className="w-full min-h-[163px] rounded"
-                            src={`http://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
-                        />
-                    </CardWrapper>
+                    <div key={movie.id} className="relative">
+                        <CardWrapper genres={movie.genre_ids} movie={movie}>
+                            <img
+                                alt="image"
+                                className="w-full min-h-[163px] rounded"
+                                src={`http://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
+                            />
+                        </CardWrapper>
+                    </div>
                 ))}
             </div>
         </div>

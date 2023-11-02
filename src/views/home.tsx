@@ -5,9 +5,9 @@ import {MovieList} from "../components/lists/movie-list";
 
 import {MovieListNumber} from "@/components/lists/movie-list-number";
 import moviesController from "@/controllers/movies-controller";
-import {Movie} from "@/types/movies/types";
 import {homeTranslate} from "@/i18n/home-translates";
 import {useLanguageStore} from "@/stores/language-store";
+import {Movie} from "@/types/movies/types";
 
 export function Home() {
     const [movies, setMovies] = useState<Movie[] | undefined>(undefined);

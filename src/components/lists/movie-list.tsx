@@ -53,7 +53,7 @@ export function MovieList({sectionName, movies}: Props) {
     }, [canClick]);
 
     return (
-        <div className="inline-flex flex-col text-[#E5E5E5] text-3xl max-w-full h-full z-10 group">
+        <div className="z-10 inline-flex flex-col h-full max-w-full text-3xl text-custom-white group">
             <div className="flex items-baseline">
                 <h3 className="pb-4 font-netflix-medium text-[1.4vw]">{sectionName}</h3>
                 <span className="hidden px-3 text-[#54B9C5] text-[0.9vw] group-hover:flex transition-all cursor-pointer">
