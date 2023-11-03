@@ -1,25 +1,15 @@
-import {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 
 import {ActionsNavbar} from "./actions-navbar";
 
-import {useLanguageStore} from "@/stores/language-store";
+import {useScroll} from "@/hooks/useScroll";
 import {navbarTranslate} from "@/i18n/navbar-translates";
+import {useLanguageStore} from "@/stores/language-store";
 
 export function Navbar() {
-    const [color, setColor] = useState(false);
-
     const language = useLanguageStore((state) => state.languageValue);
     const textTranslated = navbarTranslate[language];
-
-    const changeColor = () => {
-        window.scrollY >= 68 ? setColor(true) : setColor(false);
-    };
-
-    useEffect(() => {
-        window.addEventListener("scroll", changeColor);
-        () => window.removeEventListener("scroll", changeColor);
-    }, []);
+    const {isVisible} = useScroll({scrollSize: 68});
 
     const navActiveStyle = "text-white font-netflix-medium";
     const navDefaultStyle = "hover:text-[#B3B3B3] cursor-pointer transition-all";
@@ -27,11 +17,11 @@ export function Navbar() {
     return (
         <nav
             className={`${
-                color ? "bg-custom-black" : "bg-custom-black/0"
+                isVisible ? "bg-custom-black" : "bg-custom-black/0"
             } transition-all duration-500 text-custom-white flex justify-between items-center h-[68px] px-[60px] fixed top-0 z-20 text-sm w-full
             `}
             style={{
-                background: color ? "" : "linear-gradient(180deg, rgba(0,0,0,.7) 10%, transparent)",
+                background: isVisible ? "" : "linear-gradient(180deg, rgba(0,0,0,.7) 10%, transparent)",
             }}
         >
             <div className="flex items-center gap-11">
