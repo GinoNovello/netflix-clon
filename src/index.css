@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* body {
+    @apply !min-w-full
+} */
+
 @font-face {
     font-family: 'Netflix-Bold';
     src: url('./assets/fonts/netflix-sans-font/NetflixSans-Bold.woff2') format('woff2'),
@@ -18,5 +22,3 @@
     src: url('./assets/fonts/netflix-sans-font/NetflixSans-Medium.woff2') format('woff2'),
          url('./assets/fonts/netflix-sans-font/NetflixSans-Medium.otf') format('opentype');
 }
-
-

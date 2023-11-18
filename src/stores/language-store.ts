@@ -8,7 +8,7 @@ export interface LanguageStore {
 }
 
 export const useLanguageStore = create<LanguageStore>()((set) => ({
-    languageValue: "ES",
+    languageValue: "EN",
     setLanguage: (language: Languages) => {
         set({languageValue: language});
     },
