@@ -9,6 +9,7 @@ import {useLanguageStore} from "@/stores/language-store";
 export function Navbar() {
     const language = useLanguageStore((state) => state.languageValue);
     const textTranslated = navbarTranslate[language];
+
     const {isVisible} = useScroll({scrollSize: 68});
 
     const navActiveStyle = "text-white font-netflix-medium";

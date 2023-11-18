@@ -34,15 +34,13 @@ export function Home() {
                 <link href="http://localhost:5173/home" rel="canonical" />
             </Helmet>
             <div className="flex flex-col max-w-full">
-                <div className="absolute top-0 left-0 w-full h-full">
-                    {movies && (
-                        <img
-                            alt=""
-                            className="object-cover w-full h-full"
-                            src={`http://image.tmdb.org/t/p/original${movies[6]?.backdrop_path}`}
-                        />
-                    )}
-                </div>
+                {movies && (
+                    <img
+                        alt=""
+                        className="absolute top-0 left-0 object-cover w-screen h-screen"
+                        src={`http://image.tmdb.org/t/p/original${movies[18]?.backdrop_path}`}
+                    />
+                )}
                 <div
                     className="absolute left-0 top-auto right-0 -bottom-[1px] bg-transparent bg-repeat-x h-[14.7vw] w-full"
                     style={{
