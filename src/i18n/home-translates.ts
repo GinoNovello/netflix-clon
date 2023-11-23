@@ -18,6 +18,7 @@ export const homeTranslate = {
             mylist: "My List",
             browse_languages: "Browse by Languages",
         },
+        explore: "Explore All",
     },
     ES: {
         home_title: "Página de inicio — Netflix",
@@ -38,5 +39,6 @@ export const homeTranslate = {
             mylist: "Mi lista",
             browse_languages: "Explora por idiomas",
         },
+        explore: "Explorar todos",
     },
 };

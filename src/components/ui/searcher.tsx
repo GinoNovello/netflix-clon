@@ -3,10 +3,15 @@ import {useEffect, useRef, useState} from "react";
 import moviesController from "@/controllers/movies-controller";
 import {useDebounce} from "@/hooks/useDebounce";
 import {useMoviesStore} from "@/stores/movies-store";
+import {actionsNavbarTranslate} from "@/i18n/actions-navbar-translates";
+import {useLanguageStore} from "@/stores/language-store";
 
 export function Searcher() {
     const [openSearch, setOpenSearch] = useState(false);
     const [inputEffect, setInputEffect] = useState(false);
+
+    const language = useLanguageStore((state) => state.languageValue);
+    const textTranslated = actionsNavbarTranslate[language];
 
     const searchRef = useRef<null>(null);
     const {debouncedValue, onQueryChange} = useDebounce(500);
@@ -40,14 +45,14 @@ export function Searcher() {
 
     useEffect(() => {
         debouncedValue.length > 0 ? querySearch() : setMovieData(undefined);
-    }, [debouncedValue]);
+    }, [debouncedValue]); //TODO arreglar esto
 
     useEffect(() => {
         openSearch ? window.addEventListener("click", clickOutside) : window.removeEventListener("click", clickOutside);
     }, [openSearch]);
 
     return (
-        <button className="flex items-center cursor-pointer relative" id="searchContainer">
+        <button className="relative flex items-center cursor-pointer" id="searchContainer">
             <i
                 className="text-xl cursor-pointer fa-regular fa-magnifying-glass"
                 onClick={() => {
@@ -62,7 +67,7 @@ export function Searcher() {
                     className={`bg-black transition-all duration-500 outline-none ${
                         inputEffect ? "w-[230px] py-2" : "w-0"
                     }`}
-                    placeholder="Títulos, personas, géneros"
+                    placeholder={textTranslated.searcher}
                     onChange={(event) => onQueryChange(event?.currentTarget.value)}
                 />
             )}

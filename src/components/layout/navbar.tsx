@@ -26,13 +26,15 @@ export function Navbar() {
             }}
         >
             <div className="flex items-center gap-11">
-                <img
-                    alt="Netflix logo"
-                    className="w-[92.5px] h-[31px]"
-                    height={31}
-                    src="/netflix-logo.svg"
-                    width={92.5}
-                />
+                <NavLink to={"/home"}>
+                    <img
+                        alt="Netflix logo"
+                        className="w-[92.5px] h-[31px]"
+                        height={31}
+                        src="/netflix-logo.svg"
+                        width={92.5}
+                    />
+                </NavLink>
                 <ul className="flex gap-5">
                     <NavLink className={({isActive}) => (isActive ? navActiveStyle : navDefaultStyle)} to={"/home"}>
                         {textTranslated.navbar_sections.home}

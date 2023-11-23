@@ -4,6 +4,8 @@ import {useSpringCarousel} from "react-spring-carousel";
 import {CardWrapper} from "../card-wrapper";
 
 import {Movie} from "@/types/movies/types";
+import {useLanguageStore} from "@/stores/language-store";
+import {homeTranslate} from "@/i18n/home-translates";
 
 interface Props {
     sectionName: string;
@@ -14,6 +16,10 @@ export function MovieList({sectionName, movies}: Props) {
     const [startChange, setStartChange] = useState(false);
     const [canClick, setCanClick] = useState(true);
     const [isHover, setIsHover] = useState(false);
+
+    const language = useLanguageStore((state) => state.languageValue);
+    const textTranslated = homeTranslate[language];
+
     const {carouselFragment, slideToPrevItem, slideToNextItem, useListenToCustomEvent} = useSpringCarousel({
         slideType: "fluid",
         items: movies?.map((movie, index) => ({
@@ -57,7 +63,7 @@ export function MovieList({sectionName, movies}: Props) {
             <div className="flex items-baseline">
                 <h3 className="pb-4 font-netflix-medium text-[1.4vw]">{sectionName}</h3>
                 <span className="hidden px-3 text-[#54B9C5] text-[0.9vw] group-hover:flex transition-all cursor-pointer">
-                    Explorar todos
+                    {textTranslated.explore}
                 </span>
                 <i className="fa-regular fa-chevron-right text-[#54B9C5] text-[0.9vw] group-hover:flex hidden" />
             </div>
