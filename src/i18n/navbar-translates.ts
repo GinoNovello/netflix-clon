@@ -2,7 +2,7 @@ export const navbarTranslate = {
     EN: {
         navbar_sections: {
             home: "Home",
-            series: "Series",
+            series: "TV Shows",
             movies: "Movies",
             new_popular: "New & Popular",
             my_list: "My List",

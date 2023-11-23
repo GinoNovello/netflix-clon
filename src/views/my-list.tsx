@@ -3,10 +3,15 @@ import {Helmet} from "react-helmet";
 import {useListStore} from "@/stores/list-store";
 import {CardWrapper} from "@/components/card-wrapper";
 import {useScroll} from "@/hooks/useScroll";
+import {useLanguageStore} from "@/stores/language-store";
+import {navbarTranslate} from "@/i18n/navbar-translates";
 
 export function MyList() {
     const {isVisible} = useScroll({scrollSize: 68});
     const list = useListStore((state) => state.list);
+
+    const language = useLanguageStore((state) => state.languageValue);
+    const textTranslated = navbarTranslate[language];
 
     return (
         <div className="flex flex-col w-full">
@@ -20,7 +25,7 @@ export function MyList() {
                     isVisible ? "bg-custom-black" : "bg-transparent"
                 } text-white text-4xl h-[68px] transition-all duration-500 w-full fixed flex items-center`}
             >
-                Mi lista
+                {textTranslated.navbar_sections.my_list}
             </h4>
             <div className="grid gap-x-[6px] gap-y-20 grid-cols-6 pt-52">
                 {list.map((movie) => (

@@ -14,6 +14,7 @@ export function Home() {
 
     const language = useLanguageStore((state) => state.languageValue);
     const textTranslated = homeTranslate[language];
+
     const seekMovies = async () => {
         const res = await moviesController.getMovies();
 
