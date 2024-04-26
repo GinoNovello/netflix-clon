@@ -19,7 +19,7 @@ export function Navbar() {
         <nav
             className={`${
                 isVisible ? "bg-custom-black" : "bg-custom-black/0"
-            } transition-all duration-500 text-custom-white flex justify-between items-center h-[68px] px-[60px] fixed top-0 z-20 text-sm w-full
+            } transition-all duration-500 text-custom-white flex justify-between items-center h-[68px] px-[60px] fixed top-0 z-40 text-sm w-full
             `}
             style={{
                 background: isVisible ? "" : "linear-gradient(180deg, rgba(0,0,0,.7) 10%, transparent)",
