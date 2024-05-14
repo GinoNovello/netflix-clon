@@ -8,32 +8,14 @@ import {useLanguageStore} from "@/stores/language-store";
 
 export function Searcher() {
     const [openSearch, setOpenSearch] = useState(false);
-    const [inputEffect, setInputEffect] = useState(false);
 
     const language = useLanguageStore((state) => state.languageValue);
     const textTranslated = actionsNavbarTranslate[language];
 
-    const searchRef = useRef<null>(null);
+    const searchRef = useRef<null | HTMLButtonElement>(null);
     const {debouncedValue, onQueryChange} = useDebounce(500);
 
     const setMovieData = useMoviesStore((state) => state.setSearchMovieData);
-
-    const clickOutside = (event: any) => {
-        const searchBarId = event.target.parentElement.id === "searchContainer";
-
-        searchBarId
-            ? setOpenSearch(true)
-            : setTimeout(() => {
-                  setOpenSearch(false);
-              }, 150);
-        setInputEffect(false);
-    };
-
-    const handleEffect = () => {
-        setTimeout(() => {
-            setInputEffect(true);
-        }, 10);
-    };
 
     const querySearch = async () => {
         const res = await moviesController.searchMovies({query: debouncedValue});
@@ -43,34 +25,34 @@ export function Searcher() {
         }
     };
 
+    const clickOutside = (event: MouseEvent) => {
+        if (!searchRef.current?.contains(event.target as Node)) setOpenSearch(false);
+    };
+
+    useEffect(() => {
+        openSearch ? window.addEventListener("click", clickOutside) : window.removeEventListener("click", clickOutside);
+
+        () => window.removeEventListener("click", clickOutside);
+    }, [openSearch]);
+
     useEffect(() => {
         debouncedValue.length > 0 ? querySearch() : setMovieData(undefined);
     }, [debouncedValue]); //TODO arreglar esto
 
-    useEffect(() => {
-        openSearch ? window.addEventListener("click", clickOutside) : window.removeEventListener("click", clickOutside);
-    }, [openSearch]);
-
     return (
-        <button className="relative flex items-center cursor-pointer" id="searchContainer">
+        <button ref={searchRef} className="relative flex items-center cursor-pointer">
             <i
                 className="text-xl cursor-pointer fa-regular fa-magnifying-glass"
                 onClick={() => {
-                    handleEffect();
-                    !openSearch && setOpenSearch(!openSearch);
+                    setOpenSearch(true);
                 }}
             />
-            {openSearch && (
-                <input
-                    ref={searchRef}
-                    autoFocus
-                    className={`bg-black transition-all duration-500 outline-none ${
-                        inputEffect ? "w-[230px] py-2" : "w-0"
-                    }`}
-                    placeholder={textTranslated.searcher}
-                    onChange={(event) => onQueryChange(event?.currentTarget.value)}
-                />
-            )}
+            <input
+                autoFocus
+                className={`bg-black transition-all duration-500 outline-none ${openSearch ? "w-[230px] py-2" : "w-0"}`}
+                placeholder={textTranslated.searcher}
+                onChange={(event) => onQueryChange(event?.currentTarget.value)}
+            />
         </button>
     );
 }
