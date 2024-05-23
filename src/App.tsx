@@ -29,7 +29,7 @@ function App() {
         } else {
             firstRender && window.history.back();
         }
-    }, [moviesData]);
+    }, [moviesData, navigate, firstRender]);
 
     useEffect(() => {
         localStorage.setItem("MyList", JSON.stringify(list));
