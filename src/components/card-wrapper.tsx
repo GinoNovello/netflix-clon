@@ -20,6 +20,9 @@ export function CardWrapper({movie, setIsHover, children, genres}: Props) {
 
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+    const buttonStyle =
+        "bg-[#222222] active:bg-[#B8BCBF] rounded-full w-7 h-7 flex items-center justify-center border-2 border-[#8B8B8B] hover:border-white";
+
     const mouseLeave = () => {
         if (timerRef.current) clearTimeout(timerRef.current);
         timerRef.current = setTimeout(() => {
@@ -47,14 +50,14 @@ export function CardWrapper({movie, setIsHover, children, genres}: Props) {
                                 <i className="flex items-center justify-center text-xl text-black bg-white rounded-full fa-duotone fa-play w-7 h-7 hover:bg-custom-white" />
                                 <TooltipWrapper text={"Agregar a Mi lista"}>
                                     <i
-                                        className="text-[26px] fa-sharp fa-thin fa-plus bg-[#222222] active:bg-[#B8BCBF] rounded-full w-7 h-7 flex items-center justify-center border-2 border-[#8B8B8B] hover:border-white"
+                                        className={`${buttonStyle} text-[26px] fa-sharp fa-thin fa-plus`}
                                         onClick={() => addToList(movie)}
                                     />
                                 </TooltipWrapper>
-                                <i className="text-base fa-light fa-thumbs-up bg-[#222222] active:bg-[#B8BCBF] rounded-full w-7 h-7 flex items-center justify-center border-2 border-[#8B8B8B] hover:border-white" />
+                                <i className={`${buttonStyle} text-base fa-light fa-thumbs-up`} />
                             </div>
                             <TooltipWrapper text={"Más información"}>
-                                <i className="text-lg fa-light fa-angle-down bg-[#222222] active:bg-[#B8BCBF] rounded-full w-7 h-7 flex items-center justify-center border-2 border-[#8B8B8B] hover:border-white" />
+                                <i className={`${buttonStyle} text-lg fa-light fa-angle-down`} />
                             </TooltipWrapper>
                         </div>
                         <div>
@@ -67,7 +70,7 @@ export function CardWrapper({movie, setIsHover, children, genres}: Props) {
                                     {genres.length === index + 1 ? (
                                         ""
                                     ) : (
-                                        <i className="fa-duotone fa-circle-small fa-2xs text-[#646464]" />
+                                        <i className="$fa-duotone fa-circle-small fa-2xs text-[#646464]" />
                                     )}
                                 </Fragment>
                             ))}
